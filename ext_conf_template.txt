@@ -1,0 +1,11 @@
+  # cat=basic//; type=int; label=export type id to generate xml views of a page
+xml_type = 555
+  # cat=basic//; type=text; label=path where the xsl templates are stored
+xsl_path = EXT:bridge_lib/res/xslt/
+  # cat=basic//; type=text; label=path where exports are stored, should be the same as the path where xmlexport stores exports
+xml_source_path = fileadmin/xmlexport/
+  # cat=basic//; type=text; label=path to typoscript setup file
+flow_tspath = EXT:bridge_lib/res/ts/transformationflows.txt
+  # cat=basic//; type=text; label=color profile path
+color_profile_path = EXT:bridge_lib/res/icc/
+

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>database</type>
+		<description>
+			Language labels for database tables/fields belonging to
+			extension 'bridge'
+		</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="tx_bridge_lib_selection">
+				Printselection of Contentelements
+			</label>
+			<label index="tx_bridge_lib_selection.name">Name</label>
+			<label index="tx_bridge_lib_selection.celements">
+				Content Elements
+			</label>
+			<label index="tx_bridge_lib_selection.description">
+				Description
+			</label>
+			<label index="tt_content.tx_bridge_lib_printimages">
+				Printable images
+			</label>
+		</languageKey>
+		<languageKey index="de" type="array">
+			<label index="tx_bridge_lib_selection">
+				Drucksammlung von Inhaltselementen
+			</label>
+			<label index="tx_bridge_lib_selection.name">Name</label>
+			<label index="tx_bridge_lib_selection.celements">
+				Inhaltselemente
+			</label>
+			<label index="tx_bridge_lib_selection.description">
+				Beschreibung
+			</label>
+			<label index="tt_content.tx_bridge_lib_printimages">
+				Druckfähige Bilder
+			</label>
+		</languageKey>
+	</data>
+</T3locallang>
