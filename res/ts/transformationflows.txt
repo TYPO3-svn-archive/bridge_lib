@@ -1,0 +1,133 @@
+transformationflows{
+	10{
+		name = Adobe InDesign
+		#transform toc to indesignformat
+
+		transformators{
+			10{
+				classname=tx_bridgelib_XslTransformer
+				params{
+					source=toc.xml
+					target=export.xml
+					xsl=indesign.xsl
+					processor=saxon
+					saxoncommand=java -Xmx32m -jar /usr/bin/saxon9.jar
+					workingdirectory=fileadmin/xmlexport/
+					xslpath=EXT:bridge_lib/res/xslt/
+				}
+			}
+			#create zipfile with export.xml and ressource files
+			20{
+				classname=tx_bridgelib_ZipTransformer
+				params{
+					workingdirectory=fileadmin/xmlexport/
+					source{
+						10 = export.xml
+						20 = text
+						30 = uploads
+					}
+					target=indesign.tgz
+
+					type=tgz
+				}
+			}
+		}
+	}
+	20{
+		name = PDF via Latex
+		transformators{
+			5{
+				classname=tx_bridgelib_XslTransformer
+				params{
+					source=toc.xml
+					target=merge.xml
+					xslpath=EXT:bridge_lib/res/xslt/
+					xsl=merge.xsl
+					processor=salbotron
+					workingdirectory=fileadmin/xmlexport/
+				}
+			}
+			10{
+				classname=tx_bridgelib_XslTransformer
+				params{
+					source=merge.xml
+					target=export.tex
+					xslpath=EXT:bridge_lib/res/xslt/
+					xsl=latex.xsl
+					processor=salbotron
+					workingdirectory=fileadmin/xmlexport/
+				}
+			}
+			20{
+				classname=tx_bridgelib_PdflatexTransformer
+				params{
+					source=export.tex
+					target=export-latex.pdf
+					workingdirectory=fileadmin/xmlexport/
+
+				}
+			}
+		}
+	}
+	30{
+		name = PDF via DocBook
+		transformators{
+			5{
+				classname=tx_bridgelib_XslTransformer
+				params{
+					source=toc.xml
+					target=merge.xml
+					xslpath=EXT:bridge_lib/res/xslt/
+					xsl=merge.xsl
+					processor=salbotron
+					workingdirectory=fileadmin/xmlexport/
+				}
+			}
+			10{
+				classname=tx_bridgelib_XslTransformer
+				params{
+					source=merge.xml
+					target=docbook.xml
+					xslpath=EXT:bridge_lib/res/xslt/
+					xsl=docbook.xsl
+					processor=salbotron
+					workingdirectory=fileadmin/xmlexport/
+				}
+			}
+		}
+	}
+
+	40{
+		name = DITA for Arbortext
+		#transform toc to indesignformat
+
+		transformators{
+			10{
+				classname=tx_bridgelib_XslTransformer
+				params{
+					source=toc.xml
+					target=map.ditamap
+					xsl=dita.xsl
+					processor=saxon
+					workingdirectory=fileadmin/xmlexport/
+					saxoncommand=java -Xmx32m -jar /usr/bin/saxon9.jar
+					xslpath=EXT:bridge_lib/res/xslt/
+				}
+			}
+			#create zipfile with export.xml and ressource files
+			20{
+				classname=tx_bridgelib_ZipTransformer
+				params{
+					workingdirectory=fileadmin/xmlexport/
+					source{
+						10 = map.ditamap
+						20 = dita
+						30 = uploads
+					}
+					target=dita.tgz
+					type=tgz
+				}
+			}
+		}
+	}
+}

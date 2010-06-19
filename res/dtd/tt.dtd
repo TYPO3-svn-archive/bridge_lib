@@ -1,0 +1,41 @@
+<!ELEMENT tt:toc (tt:elem*)>
+<!ELEMENT tt:elem (tt:elem*,tt:content*)>
+<!ELEMENT tt:page (tt:content*)>
+<!ELEMENT tt:content (tt:headertext?,tt:bodytext?,tt:imagelist?)>
+<!ELEMENT tt:imagelist (tt:image*)>
+<!ELEMENT tt:image EMPTY>
+<!ELEMENT tt:bodytext (#PCDATA)>
+<!ELEMENT tt:headertext (#PCDATA)>
+<!ATTLIST tt:elem
+	uid			ID #IMPLIED
+	level		NMTOKEN #REQUIRED
+	headertext  CDATA #IMPLIED
+>
+<!ATTLIST tt:imagelist 
+	scope		CDATA #REQUIRED
+	columns		CDATA #IMPLIED
+	border		CDATA #IMPLIED
+	orientation CDATA #IMPLIED
+>
+<!ATTLIST tt:bodytext
+	href		CDATA #IMPLIED
+	rte			NMTOKEN #IMPLIED
+	layout		CDATA #IMPLIED
+	align		CDATA #IMPLIED
+>
+<!ATTLIST tt:content
+	uid			ID #REQUIRED
+	ctype		CDATA #REQUIRED
+	spacebefore NMTOKEN #IMPLIED
+	spaceafter	NMTOKEN #IMPLIED
+	sorting		CDATA #IMPLIED
+>
+<!ATTLIST tt:page
+	uid			NMTOKEN #REQUIRED
+>
+<!ATTLIST tt:image
+	href		CDATA #REQUIRED
+	alt			CDATA #IMPLIED
+	title		CDATA #IMPLIED
+	caption		CDATA #IMPLIED
+>

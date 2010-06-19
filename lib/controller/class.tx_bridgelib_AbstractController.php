@@ -109,8 +109,10 @@ abstract class tx_bridgelib_AbstractController{
 		//the factory parses the ts config file to get all available transformation flows
 		$factory = t3lib_div::makeInstance('tx_bridgelib_TransformationflowFactory');
 		$factory->configure($this->getConfigurator());
-		
+				
 		$avb_flows = $factory->getAvailableTransformationFlows();
+		
+		
 
 		//konvert the output structure into the input structure for the userinterface
 		$res['flows'] = array();
