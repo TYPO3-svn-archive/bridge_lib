@@ -187,9 +187,9 @@ class tx_bridgelib_Xmlexport{
 				switch($export){
 					case 'eps':
 						//get the absolut image file location
-						$eps_filename = substr($img_loc,0,strrpos($img_loc,".")).".eps";
-						$pdf_filename = substr($img_loc,0,strrpos($img_loc,".")).".pdf";
-						$jpg_filename = substr($img_loc,0,strrpos($img_loc,".")).".jpg";
+						$eps_filename = strtolower(substr($img_loc,0,strrpos($img_loc,".")).".eps");
+						$pdf_filename = strtolower(substr($img_loc,0,strrpos($img_loc,".")).".pdf");
+						$jpg_filename = strtolower(substr($img_loc,0,strrpos($img_loc,".")).".jpg");
 
 						###################################################################
 						# THIS IS NEEDED IF THE IMAGES SHOULD BE CONVERTED FROM RGB TO CMYK
@@ -201,9 +201,9 @@ class tx_bridgelib_Xmlexport{
 						//exec("convert -profile ".$profile_rgb." -profile ".$profile_cmyk." ".$abs_img_loc." ".$this->_getAbsStorageDir()."/".$pdf_filename);
 						//exec("convert -profile ".$profile_rgb." -profile ".$profile_cmyk." ".$abs_img_loc." ".$this->_getAbsStorageDir()."/".$jpg_filename);
 
-						exec("convert  ".$abs_img_loc."  ".$this->getAbsStorageDir()."/".$pdf_filename);
-						exec("convert  ".$abs_img_loc."  ".$this->getAbsStorageDir()."/".$eps_filename);
-						exec("convert  ".$abs_img_loc."  ".$this->getAbsStorageDir()."/".$jpg_filename);
+						exec(escapeshellcmd  ("convert  ".$abs_img_loc."  ".$this->getAbsStorageDir()."/".$pdf_filename));
+						exec(escapeshellcmd  ("convert  ".$abs_img_loc."  ".$this->getAbsStorageDir()."/".$eps_filename));
+						exec(escapeshellcmd  ("convert  ".$abs_img_loc."  ".$this->getAbsStorageDir()."/".$jpg_filename));
 						$image->setAttribute('href',strtolower($eps_filename));
 						break;
 

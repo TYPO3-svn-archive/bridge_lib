@@ -17,7 +17,7 @@ $EM_CONF[$_EXTKEY] = array(
 	'author' => 'Timo Schmidt',
 	'author_email' => 'timo-schmidt@gmx.net',
 	'shy' => '',
-	'dependencies' => 'cms,xmlrendering',
+	'dependencies' => 'cms,bridge_xmlrendering',
 	'conflicts' => '',
 	'priority' => '',
 	'module' => '',
@@ -33,7 +33,7 @@ $EM_CONF[$_EXTKEY] = array(
 	'constraints' => array(
 		'depends' => array(
 			'cms' => '',
-			'xmlrendering' => ''
+			'bridge_xmlrendering' => ''
 
 		),
 		'conflicts' => array(
